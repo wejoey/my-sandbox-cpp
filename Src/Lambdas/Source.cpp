@@ -15,5 +15,7 @@ int main()
 
     auto lambda = [](int value) { std::cout << "Value: " << value << std::endl; };
     ForEach(values, lambda);
+
+    std::cout << "sizeof values: " << sizeof values << std::endl;
     std::cin.get();
 }
