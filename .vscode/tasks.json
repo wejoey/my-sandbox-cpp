@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "clang build with asan | debug",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "command": "clang++ -O1 -g -fsanitize=address -fno-omit-frame-pointer test.cpp -o debug/test",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "launch test",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {"LSAN_OPTIONS": "verbosity=1:log_threads=1"}
+            },
+            "command": "debug/test",
+            "problemMatcher": []
+        }
+    ]
+}

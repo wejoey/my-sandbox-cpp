@@ -1,0 +1,48 @@
+#include <iostream>
+#include <map>
+#include <string>
+
+void testClassInstance();
+int test_heap_use_after_free();
+
+//======================================================================================
+int main(){
+    testClassInstance();
+    //return test_heap_use_after_free();
+}
+//======================================================================================
+
+int test_heap_use_after_free(){
+  int *array = new int[10];
+  delete [] array;
+  return array[1];
+}
+
+struct TestClass{
+    std::map<std::string, std::string> m_mFieldLabels;
+
+    void printMap(){
+        for (const auto& [field, label] : m_mFieldLabels){
+            std::cout << "  f:" << field << " l:" << label << std::endl;
+        }
+    }
+};
+
+void testClassInstance()
+{
+    TestClass testClassInstance;
+
+    std::cout << "*1 empty" << std::endl;
+    testClassInstance.printMap();
+    std::cout << "*2 add field_a and field_b" << std::endl;
+    testClassInstance.m_mFieldLabels.emplace("field_a", "value_a");
+    testClassInstance.m_mFieldLabels.emplace("field_b", "value_b");
+    testClassInstance.printMap();
+    std::cout << "*3 change field_a to *MOD" << std::endl;
+    testClassInstance.m_mFieldLabels.emplace("field_a", "value_a_MOD");
+    testClassInstance.printMap();
+    std::cout << "*4 change field_a to MOD but clear first" << std::endl;
+    testClassInstance.m_mFieldLabels.clear();
+    testClassInstance.m_mFieldLabels.emplace("field_a", "value_a_MOD");
+    testClassInstance.printMap();
+}
