@@ -2,16 +2,24 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "clang cpp17 {file} | debug",
+            "type": "shell",
+            "options": {
+                "cwd": "cpp17"
+            },
+            "command": "clang++ -O1 -std=c++17 ${fileBasename} -o debug/${fileBasenameNoExtension}.out && ./debug/${fileBasenameNoExtension}.out",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
             "label": "clang build with asan | debug",
             "type": "shell",
             "options": {
                 "cwd": "${workspaceFolder}"
             },
             "command": "clang++ -O1 -g -fsanitize=address -fno-omit-frame-pointer test.cpp -o debug/test",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
         },
         {
             "label": "launch test",
