@@ -3,8 +3,8 @@
 #include <cstdint>
 #include <iostream>
 #include <random>
-#include <vector>
 #include <execution>
+#include <vector>
 
 #define PARALLEL 1
 
