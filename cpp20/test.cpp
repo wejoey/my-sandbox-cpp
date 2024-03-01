@@ -16,11 +16,10 @@ int main(){
 }
 //======================================================================================
 
-
 void testForLoopVector(){
     std::vector<std::pair<std::string, std::string>> arr;
-    arr.push_back(std::make_pair("k1", "v1"));
-    arr.push_back(std::make_pair("k2", "v2"));
+    arr.emplace_back("k1", "v1");
+    arr.emplace_back("k2", "v2");
 
     for (const auto& [k, v] : arr) {
         std::cout << k << " " << v << std::endl;

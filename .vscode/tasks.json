@@ -2,34 +2,40 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "clang cpp20 {file} | debug",
+            "type": "shell",
+            "options": {
+                "cwd": "cpp20"
+            },
+            "command": "clang++ -O1 -g --std=c++20 ${fileBasename} -o debug/${fileBasenameNoExtension}.out && ./debug/${fileBasenameNoExtension}.out",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
             "label": "clang cpp17 {file} | debug",
             "type": "shell",
             "options": {
                 "cwd": "cpp17"
             },
-            "command": "clang++ -O1 -std=c++17 ${fileBasename} -o debug/${fileBasenameNoExtension}.out && ./debug/${fileBasenameNoExtension}.out",
+            "command": "clang++ -O1 -g -std=c++17 ${fileBasename} -o debug/${fileBasenameNoExtension}.out && ./debug/${fileBasenameNoExtension}.out",
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
         },
         {
-            "label": "clang build with asan | debug",
+            "label": "clang cpp14 {file} | debug",
             "type": "shell",
             "options": {
-                "cwd": "${workspaceFolder}"
+                "cwd": "cpp14"
             },
-            "command": "clang++ -O1 -g -fsanitize=address -fno-omit-frame-pointer test.cpp -o debug/test",
-        },
-        {
-            "label": "launch test",
-            "type": "shell",
-            "options": {
-                "cwd": "${workspaceFolder}",
-                "env": {"LSAN_OPTIONS": "verbosity=1:log_threads=1"}
-            },
-            "command": "debug/test",
-            "problemMatcher": []
+            "command": "clang++ -O1 -g --std=c++14 ${fileBasename} -o debug/${fileBasenameNoExtension}.out && ./debug/${fileBasenameNoExtension}.out",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
         }
     ]
 }

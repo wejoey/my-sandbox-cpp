@@ -1,5 +1,5 @@
 ---
-Checks: '*,-llvmlibc-*,-modernize-use-trailing-return-type'
+Checks: '*,-llvmlibc-*,-modernize-use-trailing-return-type,-fuchsia*,-altera*'
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
 FormatStyle: none
