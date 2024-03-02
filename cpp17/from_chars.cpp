@@ -21,6 +21,5 @@ int main() {
       std::cout << "This is not a number.\n";
     else if (ec == std::errc::result_out_of_range)
       std::cout << "This number is larger than an int.\n";
-
   }
 }
