@@ -5,7 +5,7 @@
             "label": "clang cpp20 {file} | debug",
             "type": "shell",
             "options": {
-                "cwd": "cpp20"
+                "cwd": "${fileDirname}"
             },
             "command": "clang++ -O1 -g --std=c++20 ${fileBasename} -o debug/${fileBasenameNoExtension}.out && ./debug/${fileBasenameNoExtension}.out",
             "group": {
@@ -17,7 +17,7 @@
             "label": "clang cpp17 {file} | debug",
             "type": "shell",
             "options": {
-                "cwd": "cpp17"
+                "cwd": "${fileDirname}"
             },
             "command": "clang++ -O1 -g -std=c++17 ${fileBasename} -o debug/${fileBasenameNoExtension}.out && ./debug/${fileBasenameNoExtension}.out",
             "group": {
@@ -29,7 +29,7 @@
             "label": "clang cpp14 {file} | debug",
             "type": "shell",
             "options": {
-                "cwd": "cpp14"
+                "cwd": "${fileDirname}"
             },
             "command": "clang++ -O1 -g --std=c++14 ${fileBasename} -o debug/${fileBasenameNoExtension}.out && ./debug/${fileBasenameNoExtension}.out",
             "group": {

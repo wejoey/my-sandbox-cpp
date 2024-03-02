@@ -1,0 +1,7 @@
+---
+Checks: '*,
+-llvmlibc-*,-modernize-use-trailing-return-type,-fuchsia*,-altera*,
+-hicpp-no-assembler'
+WarningsAsErrors: ''
+HeaderFilterRegex: ''
+FormatStyle: none
