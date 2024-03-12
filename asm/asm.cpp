@@ -4,5 +4,5 @@ int main() {
   );
   asm ("leave");
 
-  return 42;
+  return -1;
 }
