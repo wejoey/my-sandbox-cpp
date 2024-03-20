@@ -5,16 +5,22 @@
 using std::operator""s;
 using std::operator""sv;
 
-void StringView(const std::string& aConstRefString,  // requires to be in a std::string
-                  std::string_view aStringView)      // a view (ptr+len) only
+void PrintString(const std::string& aConstRefString, // requires to be in a std::string
+                   std::string_view aStringView)     // a view (ptr+len) only
 {
-    const std::string      str = aConstRefString.substr(2); // copy the string
-    const std::string_view sv1 = aStringView.substr(2);     // copy only the updated ptr+len
-
-    std::cout << str << str.size() << "\n";
-    std::cout << sv1 << sv1.size() << "\n";
+    std::cout << "str: " << aConstRefString << aConstRefString.size() << "\n";
+    std::cout << "strview: " << aStringView << aStringView.size() << "\n";
 }
 
+void CallPrintString(){
+    const std::string      str{"a string"};
+    const std::string_view strview{"a string_view"};
+
+    PrintString(str.substr(2),       // copy the string
+                strview.substr(2));  // copy only the updated ptr+len
+}
+
+#if 0
 void LiteralsOperator() {
   // the “s1” literal is used to create a std::string which is destroyed at the
   // end // of the expression, then the string_view `sv1` will point nowhere
@@ -32,8 +38,10 @@ void LiteralsOperator() {
   std::cout << sv1 << "\n";
   std::cout << sv2 << "\n";
 }
+#endif
 
 int main() {
-  StringView("a string"s, "a string_view"sv);
+  PrintString("a string"s, "a string_view"sv);
+  CallPrintString();
   //LiteralsOperator();
 }
