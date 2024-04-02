@@ -36,6 +36,18 @@
                 "kind": "build",
                 "isDefault": false
             }
+        },
+        {
+            "label": "clang cpp11 {file} | debug",
+            "type": "shell",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "command": "mkdir -p debug && clang++ -O1 -g --std=c++11 ${fileBasename} -o debug/${fileBasenameNoExtension}.out && ./debug/${fileBasenameNoExtension}.out",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
         }
     ]
 }

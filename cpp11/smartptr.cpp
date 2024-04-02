@@ -1,5 +1,6 @@
 #include <iostream>
 
+// inspired from TheCherno
 struct AllocationMetrics
 {
     uint32_t TotalAllocated = 0;
