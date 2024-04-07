@@ -1,5 +1,7 @@
+#include <cstring>
 #include <iostream>
 
+// inspired from theCherno
 class MyClass
 {
 public:
@@ -11,7 +13,7 @@ public:
         mData = new char[mSize];
         memcpy(mData, str, mSize);
     }
-    
+
     //copy constructor
     MyClass(const MyClass& other)
     {
@@ -22,7 +24,7 @@ public:
     }
 
     //move constructor
-    //rvalue reference seulement à partir de C++11
+    //rvalue reference since c++11
     MyClass(MyClass&& other) noexcept
     {
         std::cout << "Moved" << std::endl;
@@ -48,9 +50,9 @@ public:
             other.mSize = 0;
             other.mData = nullptr; // to avoid to lose the ptr in the destructor
         }
-     
         return *this;
     }
+
     ~MyClass()
     {
         std::cout << "Destructed" << std::endl;
@@ -78,7 +80,7 @@ public:
         : mName(name)
     {
     }
-    
+
     EntityA(MyClass&& name)
         : mName(std::move(name))
     {
@@ -109,7 +111,7 @@ public:
 private:
     MyClass& mName;
 };
-int main(void)
+int main()
 {
     EntityA entityA("myEntityA");
     entityA.PrintName();
@@ -117,7 +119,6 @@ int main(void)
     MyClass myClassB = MyClass("myEntityB");
     EntityB entityB(myClassB);
     entityB.PrintName();
-
 
     //move
     MyClass i1 = "i1";

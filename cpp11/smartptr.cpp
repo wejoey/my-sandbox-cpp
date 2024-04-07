@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 
 // inspired from TheCherno
 struct AllocationMetrics
@@ -45,10 +46,10 @@ int main()
     PrintMemoryUsage();
 
     {
-        std::unique_ptr<MyClass> myClassPtr1 = std::make_unique<MyClass>();
+        //std::unique_ptr<MyClass> myClassPtr1 = std::make_unique<MyClass>();
         std::shared_ptr<MyClass> myClassPtr2 = std::make_shared<MyClass>();
 
-        ptr1 = myClassPtr1.get();
+        //ptr1 = myClassPtr1.get();
         ptr2 = myClassPtr2.get();
         PrintMemoryUsage();
     }
